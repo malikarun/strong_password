@@ -42,9 +42,9 @@ module StrongPassword
         'E_!3password' => 11.5, # Adjusts common dictionary words regardless of placement
         'h#e0zbPas 32e2i81 password' => 31.0625, # Even if there are multiple words
         '123456' => 4, # Even if they are also qwerty strings
-        'password123456' => 14, # But only drops the first matched word
-        'asdf)asdf' => 14, # Doesn't break with parens
-        'asdf[]asdf' => 16 # Doesn't break with []s
+        'password123456' => 7.5, # Drops all matched words
+        'asdf)asdf' => 7.5, # Doesn't break with parens
+        'asdf[]asdf' => 9.5 # Doesn't break with []s
       }.each do |password, bits|
         it "returns #{bits} for '#{password}'" do
           expect(DictionaryAdjuster.new.adjusted_entropy(password)).to eq(bits)
