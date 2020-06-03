@@ -21,7 +21,7 @@ module StrongPassword
         'blahblah' => true,
         'password' => false,
         'wwwwwwww' => false,
-        'adamruge' => false,
+        'adamruge' => true,
         'madaegur' => true,
         'aB$1' => false
       }.each do |password, strength|
@@ -54,8 +54,7 @@ module StrongPassword
         'adamruge' => false,
         'aB$1' => false,
         'correct horse battery staple' => false,
-        'c0rr#ct h0rs3 Batt$ry st@pl3 is Gr34t' => false,
-        'c0rr#ct h0rs3 Batt$ry st@pl3 is Gr34t AnD c0oL' => true
+        'c0rr#ct h0rs3 Batt$ry st@pl3 is Gr34t' => true,
       }.each do |password, strength|
         it "is_strong? returns #{strength} for '#{password}' with standard bits of entropy" do
           expect(StrengthChecker.new(min_entropy: 40, use_dictionary: true).is_strong?(password)).to eq(strength)
